@@ -1,0 +1,812 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nicolás Arnau - Artista VFX</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        header {
+            background-color: #000000;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #333333;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #cccccc;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            padding: 80px 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 600px;
+            border-bottom: 1px solid #333333;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: #cccccc;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .hero-description {
+            font-size: 15px;
+            color: #aaaaaa;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            text-align: justify;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #ffffff;
+            color: #000000;
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
+            border: 2px solid #ffffff;
+        }
+
+        .cta-button:hover {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-icon {
+            width: 300px;
+            height: 300px;
+            background-color: #1a1a1a;
+            border: 2px solid #333333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+        }
+
+        /* SOFTWARE SECTION */
+        .software-section {
+            background-color: #0a0a0a;
+            padding: 60px;
+            border-bottom: 1px solid #333333;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .software-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+        }
+
+        .software-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-color: #1a1a1a;
+            border: 1px solid #333333;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .software-item:hover {
+            background-color: #2a2a2a;
+            border-color: #555555;
+            transform: translateY(-5px);
+        }
+
+        .software-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .software-logo {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 10px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+
+        .software-name {
+            font-size: 13px;
+            text-align: center;
+            color: #cccccc;
+            font-weight: 600;
+        }
+
+        /* PORTFOLIO SECTION */
+        .portfolio-section {
+            background-color: #0a0a0a;
+            padding: 80px 60px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .portfolio-card {
+            background-color: #1a1a1a;
+            border: 1px solid #333333;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .portfolio-card:hover {
+            border-color: #555555;
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-image.placeholder {
+            background-color: #2a2a2a;
+            color: #666666;
+        }
+
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .portfolio-card:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .play-button {
+            width: 60px;
+            height: 60px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #000000;
+        }
+
+        .portfolio-info {
+            padding: 25px;
+        }
+
+        .portfolio-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-software {
+            font-size: 12px;
+            color: #888888;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .portfolio-description {
+            font-size: 13px;
+            color: #aaaaaa;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-status {
+            display: inline-block;
+            font-size: 11px;
+            padding: 5px 10px;
+            background-color: #2a2a2a;
+            color: #cccccc;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .portfolio-status.completed {
+            background-color: #1a3a1a;
+            color: #90ee90;
+        }
+
+        .portfolio-status.in-progress {
+            background-color: #3a2a1a;
+            color: #ffa500;
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: #1a1a1a;
+            margin: 5% auto;
+            padding: 40px;
+            border: 1px solid #333333;
+            width: 90%;
+            max-width: 1000px;
+            max-height: 85vh;
+            overflow-y: auto;
+            animation: slideIn 0.3s;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close:hover {
+            color: #ffffff;
+        }
+
+        .modal-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        .modal-video {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            margin-bottom: 30px;
+            background-color: #0a0a0a;
+            border: 1px solid #333333;
+        }
+
+        .modal-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .modal-detail-item {
+            border-left: 2px solid #333333;
+            padding-left: 20px;
+        }
+
+        .modal-detail-label {
+            font-size: 12px;
+            color: #888888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .modal-detail-value {
+            font-size: 15px;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .modal-description {
+            font-size: 14px;
+            color: #aaaaaa;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .modal-description h3 {
+            font-size: 16px;
+            color: #ffffff;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #000000;
+            padding: 40px 60px;
+            border-top: 1px solid #333333;
+            text-align: center;
+            color: #888888;
+            font-size: 13px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .hero {
+                flex-direction: column;
+                padding: 60px 40px;
+            }
+
+            .hero-visual {
+                margin-top: 40px;
+            }
+
+            .hero-icon {
+                width: 250px;
+                height: 250px;
+                font-size: 100px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 30px;
+            }
+
+            .modal-details {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav a {
+                margin-left: 15px;
+            }
+
+            .hero {
+                padding: 40px 20px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .software-section,
+            .portfolio-section {
+                padding: 40px 20px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+                margin: 20% auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="logo">NICOLÁS ARNAU</div>
+        <nav>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#software">Software</a>
+            <a href="#contact">Contacto</a>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Artista VFX</h1>
+            <p class="hero-subtitle">Efectos Visuales en Tiempo Real para Videojuegos</p>
+            <p class="hero-description">
+                Soy un estudiante que aspira a ser un artista VFX enfocado en la creación de efectos visuales en tiempo real para videojuegos. Trabajo principalmente con Unreal Engine 5, utilizando Niagara para desarrollar efectos optimizados y expresivos que refuercen la jugabilidad y la narrativa visual. Me interesa entender tanto el lado artístico como el técnico del VFX, buscando siempre un equilibrio entre impacto visual, rendimiento y coherencia estética dentro del mundo del juego.
+            </p>
+            <a href="#portfolio" class="cta-button">Ver Portfolio</a>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-icon">✨</div>
+        </div>
+    </section>
+
+    <!-- SOFTWARE SECTION -->
+    <section class="software-section" id="software">
+        <h2 class="section-title">Software & Herramientas</h2>
+        <div class="software-grid">
+            <div class="software-item">
+                <img src="https://cdn.worldvectorlogo.com/logos/unreal-engine-1.svg" alt="Unreal Engine 5" class="software-logo">
+                <div class="software-name">Unreal Engine 5</div>
+            </div>
+            <div class="software-item">
+                <img src="https://cdn.worldvectorlogo.com/logos/unity-technologies-logo.svg" alt="Unity" class="software-logo">
+                <div class="software-name">Unity</div>
+            </div>
+            <div class="software-item">
+                <img src="https://cdn.worldvectorlogo.com/logos/autodesk-maya.svg" alt="Autodesk Maya" class="software-logo">
+                <div class="software-name">Autodesk Maya</div>
+            </div>
+            <div class="software-item">
+                <img src="https://cdn.worldvectorlogo.com/logos/blender-2.svg" alt="Blender" class="software-logo">
+                <div class="software-name">Blender</div>
+            </div>
+            <div class="software-item">
+                <img src="https://cdn.worldvectorlogo.com/logos/autodesk-3ds-max.svg" alt="3ds Max" class="software-logo">
+                <div class="software-name">3ds Max</div>
+            </div>
+            <div class="software-item">
+                <img src="https://cdn.worldvectorlogo.com/logos/zbrush.svg" alt="ZBrush" class="software-logo">
+                <div class="software-name">ZBrush</div>
+            </div>
+            <div class="software-item">
+                <img src="https://cdn.worldvectorlogo.com/logos/substance-painter.svg" alt="Substance Painter" class="software-logo">
+                <div class="software-name">Substance Painter</div>
+            </div>
+            <div class="software-item">
+                <img src="https://cdn.worldvectorlogo.com/logos/adobe-photoshop-2.svg" alt="Photoshop" class="software-logo">
+                <div class="software-name">Photoshop</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section class="portfolio-section" id="portfolio">
+        <h2 class="section-title">Trabajos VFX</h2>
+        <div class="portfolio-grid">
+            <!-- TRABAJO 1: Portal VFX -->
+            <div class="portfolio-card" onclick="openModal('modal1')">
+                <div class="portfolio-image placeholder">
+                    <div style="text-align: center;">
+                        <div style="font-size: 60px; margin-bottom: 10px;">🌀</div>
+                        <div style="font-size: 12px; color: #888888;">Portal VFX</div>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <div class="play-button">▶</div>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <div class="portfolio-title">Real-Time Portal VFX</div>
+                    <div class="portfolio-software">Unreal Engine 5 • Niagara</div>
+                    <div class="portfolio-description">
+                        Efecto de portal interactivo creado con Niagara, enfocado en partículas dinámicas y efectos visuales en tiempo real.
+                    </div>
+                    <span class="portfolio-status completed">Completado</span>
+                </div>
+            </div>
+
+            <!-- TRABAJO 2: Meteor Strike VFX -->
+            <div class="portfolio-card" onclick="openModal('modal2')">
+                <div class="portfolio-image placeholder">
+                    <div style="text-align: center;">
+                        <div style="font-size: 60px; margin-bottom: 10px;">💥</div>
+                        <div style="font-size: 12px; color: #888888;">Meteor Strike VFX</div>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <div class="play-button">▶</div>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <div class="portfolio-title">Real-Time Meteor Strike VFX</div>
+                    <div class="portfolio-software">Unreal Engine 5 • Niagara</div>
+                    <div class="portfolio-description">
+                        Impacto de meteorito con efectos de explosión, polvo y ondas de choque. Optimizado para rendimiento en tiempo real.
+                    </div>
+                    <span class="portfolio-status completed">Completado</span>
+                </div>
+            </div>
+
+            <!-- TRABAJO 3: Laser VFX -->
+            <div class="portfolio-card" onclick="openModal('modal3')">
+                <div class="portfolio-image placeholder">
+                    <div style="text-align: center;">
+                        <div style="font-size: 60px; margin-bottom: 10px;">⚡</div>
+                        <div style="font-size: 12px; color: #888888;">Laser VFX</div>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <div class="play-button">▶</div>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <div class="portfolio-title">Laser Beam VFX</div>
+                    <div class="portfolio-software">Unreal Engine 5 • Niagara</div>
+                    <div class="portfolio-description">
+                        Efecto de rayo láser con glow, distorsión y partículas de energía. Diseñado para armas o efectos ambientales.
+                    </div>
+                    <span class="portfolio-status in-progress">En Progreso</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODALS -->
+    <!-- MODAL 1: Portal VFX -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h2 class="modal-title">Real-Time Portal VFX – UE5 Niagara</h2>
+            
+            <div class="modal-video">
+                <iframe width="100%" height="100%" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="video1"></iframe>
+            </div>
+
+            <div class="modal-details">
+                <div class="modal-detail-item">
+                    <div class="modal-detail-label">Software</div>
+                    <div class="modal-detail-value">Unreal Engine 5 • Niagara</div>
+                </div>
+                <div class="modal-detail-item">
+                    <div class="modal-detail-label">Estado</div>
+                    <div class="modal-detail-value">Completado</div>
+                </div>
+                <div class="modal-detail-item">
+                    <div class="modal-detail-label">Rol</div>
+                    <div class="modal-detail-value">Artista VFX</div>
+                </div>
+                <div class="modal-detail-item">
+                    <div class="modal-detail-label">Tipo</div>
+                    <div class="modal-detail-value">Efecto Interactivo</div>
+                </div>
+            </div>
+
+            <div class="modal-description">
+                <h3>Descripción del Proyecto</h3>
+                <p>
+                    Estudio de un portal mágico en tiempo real, desarrollado con Niagara en Unreal Engine 5, explorando materiales personalizados, emisores basados en mesh y distorsión para lograr un efecto dinámico, claro y con un estilo mágico adecuado para gameplay. El proyecto profundiza en la legibilidad visual de la forma y el movimiento, implementando módulos e ideas experimentales para mantener siluetas claras y un comportamiento visual coherente.
+                </p>
+                <h3>Características Técnicas</h3>
+                <p>
+                    • Materiales personalizados y emisores basados en mesh<br>
+                    • Distorsión dinámica para efecto mágico<br>
+                    • Enfoque en legibilidad visual y siluetas claras<br>
+                    • Módulos experimentales de Niagara<br>
+                    • Comportamiento visual coherente para gameplay
+                </p>
+                <h3>Enlace al Proyecto</h3>
+                <p>
+                    <a href="https://www.therookies.co/u/Nicoam" target="_blank" style="color: #cccccc; text-decoration: underline;">Ver en The Rookies</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: Meteor Strike VFX -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+            <h2 class="modal-title">Real-Time Meteor Strike VFX – UE5 Niagara</h2>
+            
+            <div class="modal-video">
+                <iframe width="100%" height="100%" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="video2"></iframe>
+            </div>
+
+            <div class="modal-details">
+                <div class="modal-detail-item">
+                    <div class="modal-detail-label">Software</div>
+                    <div class="modal-detail-value">Unreal Engine 5 • Niagara</div>
+                </div>
+                <div class="modal-detail-item">
+                    <div class="modal-detail-label">Estado</div>
+                    <div class="modal-detail-value">Completado</div>
+                </div>
+                <div class="modal-detail-item">
+                    <div class="modal-detail-label">Rol</div>
+                    <div class="modal-detail-value">Artista VFX</div>
+                </div>
+                <div class="modal-detail-item">
+                    <div class="modal-detail-label">Tipo</div>
+                    <div class="modal-detail-value">Efecto de Impacto</div>
+                </div>
+            </div>
+
+            <div class="modal-description">
+                <h3>Descripción del Proyecto</h3>
+                <p>
+                    VFX de impacto de meteorito en tiempo real, creado en Unreal Engine 5 con Niagara. El efecto combina fuego, humo, chispas, escombros y una explosión final, enfocándose en timing, claridad y sensación de peso para que funcione de forma convincente en un entorno de juego. Se optimizó el sistema usando partículas GPU donde no era necesaria colisión y materiales simples para mantener rendimiento y legibilidad visual.
+                </p>
+                <h3>Características Técnicas</h3>
+                <p>
+                    • Múltiples sistemas de partículas sincronizados (fuego, humo, chispas, escombros)<br>
+                    • Explosión final con impacto visual<br>
+                    • Partículas GPU para optimización<br>
+                    • Materiales simples para legibilidad visual<br>
+                    • Timing y peso convincentes para gameplay
+                </p>
+                <h3>Enlace al Proyecto</h3>
+                <p>
+                    <a href="https://www.therookies.co/u/Nicoam" target="_blank" style="color: #cccccc; text-decoration: underline;">Ver en The Rookies</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: Laser VFX -->
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal3')">&times;</span>
+            <h2 class="modal-title">Laser Beam VFX – UE5 Niagara</h2>
+            
+            <div class="modal-video">
+                <iframe width="100%" height="100%" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="video3"></iframe>
+            </div>
+
+            <div class="modal-details">
+                <div class="modal-detail-item">
+                    <div class="modal-detail-label">Software</div>
+                    <div class="modal-detail-value">Unreal Engine 5 • Niagara</div>
+                </div>
+                <div class="modal-detail-item">
+                    <div class="modal-detail-label">Estado</div>
+                    <div class="modal-detail-value">En Progreso</div>
+                </div>
+                <div class="modal-detail-item">
+                    <div class="modal-detail-label">Rol</div>
+                    <div class="modal-detail-value">Artista VFX</div>
+                </div>
+                <div class="modal-detail-item">
+                    <div class="modal-detail-label">Tipo</div>
+                    <div class="modal-detail-value">Efecto de Energía</div>
+                </div>
+            </div>
+
+            <div class="modal-description">
+                <h3>Descripción del Proyecto</h3>
+                <p>
+                    Laser Beam VFX es un efecto de rayo láser versátil diseñado para armas, efectos ambientales o eventos narrativos. El efecto combina un rayo central brillante con partículas de energía circundantes para crear una sensación de poder y tecnología.
+                </p>
+                <h3>Características Técnicas</h3>
+                <p>
+                    • Rayo láser central con glow dinámico<br>
+                    • Partículas de energía y distorsión<br>
+                    • Efectos de impacto al final del rayo<br>
+                    • Optimización para múltiples instancias<br>
+                    • Personalizable en color y intensidad
+                </p>
+                <h3>Enlace al Proyecto</h3>
+                <p>
+                    <a href="https://www.therookies.co/u/Nicoam" target="_blank" style="color: #cccccc; text-decoration: underline;">Ver en The Rookies</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <p>© 2025 Nicolás Arnau. Artista VFX especializado en Unreal Engine 5.</p>
+        <p>The Rookies: <a href="https://www.therookies.co/u/Nicoam" target="_blank" style="color: #cccccc;">therookies.co/u/Nicoam</a></p>
+    </footer>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+            }
+        }
+
+        // Función para actualizar videos de YouTube
+        function setYouTubeVideo(videoId, youtubeId) {
+            const iframe = document.getElementById(videoId);
+            iframe.src = `https://www.youtube.com/embed/${youtubeId}?rel=0`;
+        }
+
+        // INSTRUCCIONES PARA AGREGAR VIDEOS:
+        // Cuando tengas los links de YouTube, reemplaza los IDs en las siguientes líneas:
+        // setYouTubeVideo('video1', 'YOUTUBE_ID_PORTAL');
+        // setYouTubeVideo('video2', 'YOUTUBE_ID_METEOR');
+        // setYouTubeVideo('video3', 'YOUTUBE_ID_LASER');
+    </script>
+</body>
+</html>
